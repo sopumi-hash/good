@@ -1,0 +1,1013 @@
+/* ==========================================================================
+   쏙쏙 순서 맞추기 생각 워크북 - 초등 3학년 학습지 스타일시트
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&family=Nanum+Pen+Script&display=swap');
+
+:root {
+  --primary-color: #2b8a3e;
+  --primary-light: #ebfbee;
+  --primary-dark: #237032;
+  --accent-color: #f59f00;
+  --accent-light: #fff9db;
+  --blue-color: #1971c2;
+  --blue-light: #e7f5ff;
+  --border-color: #dee2e6;
+  --text-main: #212529;
+  --text-muted: #495057;
+  --bg-page: #f8f9fa;
+  --card-bg: #ffffff;
+  --success: #37b24d;
+  --danger: #f03e3e;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding-bottom: 60px;
+}
+
+/* ==========================================================================
+   웹 상단 네비게이션 & 제어 툴바 (인쇄 시 숨김)
+   ========================================================================== */
+.app-header-bar {
+  background: linear-gradient(135deg, #2b8a3e 0%, #20c997 100%);
+  color: white;
+  padding: 16px 24px;
+  box-shadow: 0 4px 12px rgba(43, 138, 62, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 32px;
+  background: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.logo-text h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo-text p {
+  font-size: 13px;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: #ffd43b;
+  color: #212529;
+}
+.btn-primary:hover {
+  background-color: #fcc419;
+  box-shadow: 0 4px 10px rgba(245, 159, 0, 0.3);
+}
+
+.btn-white {
+  background-color: white;
+  color: var(--primary-dark);
+}
+.btn-white:hover {
+  background-color: #f1f3f5;
+}
+
+.btn-outline {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+}
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.btn-secondary {
+  background-color: #e9ecef;
+  color: #495057;
+}
+.btn-secondary:hover {
+  background-color: #dee2e6;
+}
+
+/* ==========================================================================
+   설정 및 차시 선택 패널 (인쇄 시 숨김)
+   ========================================================================== */
+.controls-panel {
+  max-width: 1100px;
+  margin: 20px auto 10px;
+  padding: 16px 20px;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.session-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.session-selector-group label {
+  font-weight: 700;
+  font-size: 15px;
+  color: #343a40;
+}
+
+.select-custom {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 2px solid #ced4da;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #fff;
+  color: #343a40;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.select-custom:focus {
+  border-color: var(--primary-color);
+}
+
+.quick-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   학습지 메인 종이 컨테이너 (A4 형태)
+   ========================================================================== */
+.worksheet-container {
+  max-width: 1060px;
+  margin: 16px auto;
+  background: white;
+  padding: 36px 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 2px solid #e9ecef;
+  position: relative;
+}
+
+/* ==========================================================================
+   학습지 상단 헤더 (학년/반/번호/이름 기입란)
+   ========================================================================== */
+.worksheet-header {
+  border-bottom: 3px double #343a40;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.sheet-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.sheet-badge {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  border: 1.5px solid #b2f2bb;
+}
+
+.sheet-title-row h2 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.sheet-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.student-info-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #f8f9fa;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  border: 2px solid #ced4da;
+  font-size: 15px;
+  font-weight: 700;
+  color: #343a40;
+}
+
+.student-info-box .field {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.info-input {
+  border: none;
+  border-bottom: 2px solid #495057;
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  color: #1a1a1a;
+  text-align: center;
+  outline: none;
+  padding: 2px 4px;
+}
+
+.info-input.input-sm {
+  width: 44px;
+}
+
+.info-input.input-name {
+  width: 100px;
+}
+
+.confirm-stamp-box {
+  border: 2px dashed #adb5bd;
+  border-radius: var(--radius-sm);
+  padding: 2px 10px;
+  font-size: 13px;
+  color: #868e96;
+  text-align: center;
+  min-width: 60px;
+}
+
+/* ==========================================================================
+   학습 가이드 / 안내 배너
+   ========================================================================== */
+.instruction-guide-box {
+  background: linear-gradient(to right, #e7f5ff, #ebfbee);
+  border-left: 5px solid #20c997;
+  padding: 14px 18px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 30px;
+  font-size: 14.5px;
+  color: #2b2b2b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.guide-text strong {
+  color: var(--blue-color);
+}
+
+/* ==========================================================================
+   개별 문제 섹션 (3~5문제 묶음)
+   ========================================================================== */
+.problem-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s;
+  page-break-inside: avoid;
+}
+
+.problem-card:hover {
+  border-color: #b2f2bb;
+}
+
+.problem-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.problem-num-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.problem-number-badge {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.problem-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.blank-step-tag {
+  background-color: var(--accent-light);
+  color: #d9480f;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #ffd43b;
+}
+
+.problem-desc {
+  font-size: 14.5px;
+  color: #495057;
+  margin-bottom: 20px;
+  padding-left: 38px;
+}
+
+/* ==========================================================================
+   순서 맞추기 트랙 (Sequence Track)
+   시작(고정) -> 빈칸들(선택/오려붙이기) -> 끝(고정)
+   ========================================================================== */
+.sequence-track {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  background-color: #f8f9fa;
+  padding: 16px 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid #e9ecef;
+  margin-bottom: 20px;
+}
+
+.step-card {
+  flex: 1 1 130px;
+  max-width: 170px;
+  min-width: 120px;
+  background: white;
+  border: 2px solid #dee2e6;
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* 고정 카드 (시작 & 끝) */
+.step-card.card-fixed-start {
+  background-color: #f4fce3;
+  border: 2.5px solid #74b816;
+}
+
+.step-card.card-fixed-end {
+  background-color: #fff3bf;
+  border: 2.5px solid #f59f00;
+}
+
+.fixed-badge {
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.badge-start {
+  background: #74b816;
+  color: white;
+}
+
+.badge-end {
+  background: #f59f00;
+  color: white;
+}
+
+/* 빈칸 슬롯 (Dropzone & Number input) */
+.step-card.slot-blank {
+  background-color: #ffffff;
+  border: 2.5px dashed #4dabf7;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 180px;
+  justify-content: flex-start;
+}
+
+.step-card.slot-blank:hover {
+  background-color: #f8faff;
+  border-color: #1971c2;
+}
+
+.step-card.slot-blank.dragover {
+  background-color: #d0ebff;
+  border-color: #1864ab;
+  transform: scale(1.02);
+}
+
+.step-card.slot-blank.has-card {
+  border-style: solid;
+  border-color: #74c0fc;
+  background-color: #ffffff;
+}
+
+/* 슬롯 번호 기입 영역 */
+.slot-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  border-bottom: 1px dotted #ced4da;
+  padding-bottom: 4px;
+}
+
+.slot-order-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1971c2;
+}
+
+.slot-number-writer {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #e7f5ff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #1864ab;
+}
+
+.number-input-field {
+  width: 24px;
+  height: 22px;
+  border: 1.5px solid #339af0;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #1864ab;
+  outline: none;
+  background: white;
+}
+
+.number-input-field:focus {
+  border-color: #0c8599;
+  box-shadow: 0 0 0 2px rgba(51, 154, 240, 0.2);
+}
+
+/* 빈칸 내부 붙이기/놓기 안내 텍스트 */
+.slot-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #868e96;
+  font-size: 12px;
+  text-align: center;
+  padding: 8px 4px;
+  width: 100%;
+}
+
+.slot-placeholder .paste-icon {
+  font-size: 22px;
+  opacity: 0.8;
+}
+
+/* 빈칸에 놓인 카드 */
+.slotted-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slotted-number-tag {
+  background: #339af0;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+/* 화살표 구분자 */
+.step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #adb5bd;
+  font-weight: 900;
+  user-select: none;
+}
+
+/* 카드 공통 그림 & 텍스트 */
+.card-art-box {
+  width: 82px;
+  height: 82px;
+  margin: 4px auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-card-art {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-sm);
+}
+
+.card-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #212529;
+  margin-bottom: 2px;
+  word-break: keep-all;
+}
+
+.card-desc {
+  font-size: 11.5px;
+  color: #495057;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+/* ==========================================
+   보기 카드 보관함 / 가위 오리기 영역 (Choice Card Tray)
+   ========================================== */
+.choice-tray-section {
+  margin-top: 14px;
+  border-top: 2px dashed #ced4da;
+  padding-top: 14px;
+  position: relative;
+}
+
+.choice-tray-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tray-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #495057;
+}
+
+.scissor-icon {
+  font-size: 16px;
+  color: #e03131;
+}
+
+.tray-tip {
+  font-size: 12px;
+  color: #868e96;
+}
+
+.choice-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  background-color: #f1f3f5;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px dashed #adb5bd;
+}
+
+/* 순서 맞추기 선택 카드 (드래그 가능, 오리기 점선 테두리) */
+.draggable-card {
+  width: 155px;
+  background: white;
+  border: 2px dashed #495057; /* 가위로 오릴 수 있는 점선 */
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: grab;
+  position: relative;
+  transition: all 0.2s ease;
+  user-select: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.draggable-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+}
+
+.draggable-card:active {
+  cursor: grabbing;
+}
+
+.draggable-card.is-placed {
+  opacity: 0.4;
+  filter: grayscale(0.5);
+  pointer-events: none;
+}
+
+/* 카드 상단 큼직한 번호 딱지 (①, ②, ③, ④, ⑤) */
+.card-number-badge {
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  background: #e03131;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 2px solid white;
+}
+
+.cut-scissor-guide {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 13px;
+  color: #adb5bd;
+}
+
+/* 채점 피드백 결과 배너 */
+.feedback-box {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-box.correct {
+  display: flex;
+  background-color: #d3f9d8;
+  color: #2b8a3e;
+  border: 1.5px solid #8ce99a;
+}
+
+.feedback-box.wrong {
+  display: flex;
+  background-color: #ffe3e3;
+  color: #c92a2a;
+  border: 1.5px solid #ffa8a8;
+}
+
+/* ==========================================================================
+   모달 (맞춤형 학습지 생성기)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: modalPop 0.25s ease-out;
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f1f3f5;
+  padding-bottom: 12px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.btn-close-modal {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #868e96;
+}
+
+.modal-form-group {
+  margin-bottom: 18px;
+}
+
+.modal-form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #343a40;
+}
+
+.btn-group-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-toggle-option {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #dee2e6;
+  border-radius: var(--radius-sm);
+  background: white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-toggle-option.active {
+  border-color: var(--primary-color);
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+/* ==========================================================================
+   정답지 토글 (교사용 모드)
+   ========================================================================== */
+.answer-overlay {
+  display: none;
+  background-color: #fff9db;
+  border: 2px dashed #f59f00;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #d9480f;
+}
+
+.show-answers .answer-overlay {
+  display: block;
+}
+
+/* ==========================================================================
+   인쇄 최적화 스타일 (@media print)
+   A4 용지에 딱 맞춘 고품질 학습지 출력 레이아웃
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  body {
+    background: white !important;
+    padding: 0 !important;
+    color: #000000 !important;
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 인쇄 시 불필요한 컨트롤바, 헤더, 모달 완전히 숨김 */
+  .app-header-bar,
+  .controls-panel,
+  .modal-overlay,
+  .feedback-box,
+  .quick-tools,
+  .btn-print-hide {
+    display: none !important;
+  }
+
+  .worksheet-container {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .worksheet-header {
+    border-bottom: 2px solid #000000 !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .sheet-title-row h2 {
+    font-size: 20pt !important;
+  }
+
+  .student-info-box {
+    background: transparent !important;
+    border: 1.5px solid #000000 !important;
+    padding: 6px 12px !important;
+  }
+
+  .info-input {
+    border-bottom: 1.5px solid #000000 !important;
+  }
+
+  .instruction-guide-box {
+    background: #f8f9fa !important;
+    border-left: 4px solid #333333 !important;
+    padding: 8px 12px !important;
+    margin-bottom: 16px !important;
+    font-size: 10pt !important;
+  }
+
+  .problem-card {
+    border: 1.5px solid #495057 !important;
+    box-shadow: none !important;
+    padding: 14px 16px !important;
+    margin-bottom: 18px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .sequence-track {
+    background: transparent !important;
+    border: 1px solid #ced4da !important;
+    padding: 10px 8px !important;
+  }
+
+  .step-card {
+    border: 1.5px solid #343a40 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+  }
+
+  .step-card.slot-blank {
+    border: 2px dashed #000000 !important;
+    background: white !important;
+  }
+
+  .choice-tray-section {
+    border-top: 2px dashed #000000 !important;
+    padding-top: 10px !important;
+    margin-top: 10px !important;
+  }
+
+  .choice-cards-grid {
+    background: transparent !important;
+    border: none !important;
+    padding: 6px 0 !important;
+  }
+
+  .draggable-card {
+    border: 2px dashed #000000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    cursor: default !important;
+  }
+
+  .card-number-badge {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1.5px solid #000000 !important;
+  }
+
+  .card-art-box {
+    width: 65px !important;
+    height: 65px !important;
+  }
+
+  .card-title {
+    font-size: 11pt !important;
+  }
+
+  .card-desc {
+    font-size: 9pt !important;
+  }
+
+  .slot-placeholder {
+    color: #495057 !important;
+  }
+
+  /* 강제 페이지 넘김이 필요한 경우 */
+  .page-break {
+    page-break-before: always;
+  }
+}
