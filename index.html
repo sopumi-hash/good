@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎨 쏙쏙 순서 맞추기 생각 워크북 (초등 3학년)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       웹 상단 조작 툴바 (인쇄 시 자동 숨김)
+       ========================================== -->
+  <header class="app-header-bar">
+    <div class="header-inner">
+      <div class="logo-area">
+        <div class="logo-icon">🧩</div>
+        <div class="logo-text">
+          <h1>생각 쑥쑥! 순서 맞추기 워크북</h1>
+          <p>초등학교 3학년 교육과정 연계 그림카드 순서 완성 학습지</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="printWorksheet()" title="A4 학습지로 바로 인쇄합니다">
+          🖨️ 학습지 인쇄하기
+        </button>
+        <button class="btn btn-white" onclick="checkAnswers()" title="화면에서 푼 문제 정답을 채점합니다">
+          ✨ 채점하기
+        </button>
+        <button class="btn btn-outline" onclick="resetAndShuffle()" title="순서를 다시 섞습니다">
+          🔄 순서 섞기
+        </button>
+        <button class="btn btn-outline" id="btnToggleAnswers" onclick="toggleAnswerMode()" title="교사용 정답을 확인합니다">
+          💡 정답 보기
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       차시 선택 및 맞춤형 설정 패널 (인쇄 시 숨김)
+       ========================================== -->
+  <section class="controls-panel">
+    <div class="session-selector-group">
+      <label for="sessionSelector">📚 학습 차시 선택:</label>
+      <select id="sessionSelector" class="select-custom">
+        <option value="session_1">제 1차시: 신비로운 생물의 한살이 탐구 (과학 4문제)</option>
+        <option value="session_2">제 2차시: 스스로 척척! 바르고 건강한 생활 (보건/도덕 4문제)</option>
+        <option value="session_3">제 3차시: 조물조물 만들기와 이야기의 흐름 (실과/국어 4문제)</option>
+        <option value="custom">🎲 선생님 맞춤형 새 학습지 만들기...</option>
+      </select>
+    </div>
+
+    <div class="quick-tools">
+      <button class="btn btn-secondary" onclick="openCustomGenerator()">
+        ⚙️ 문제 수 / 난이도 맞춤 생성
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       A4 학습지 인쇄 및 인터랙티브 본문 영역
+       ========================================== -->
+  <main class="worksheet-container" id="worksheetContainer">
+    <!-- 학습지 상단 헤더 (학년/반/번호/이름 기입란) -->
+    <header class="worksheet-header">
+      <div class="sheet-title-row">
+        <div>
+          <span class="sheet-badge" id="sheetBadge">초등 3학년 과학</span>
+          <h2 id="sheetTitle">제 1차시: 신비로운 생물의 한살이 탐구</h2>
+          <p class="sheet-subtitle" id="sheetSubtitle">동물과 식물이 알과 씨앗에서 자라나는 신기한 생명의 순서를 탐구해 봅시다.</p>
+        </div>
+
+        <!-- 학생 정보 작성란 -->
+        <div class="student-info-box">
+          <div class="field">
+            <span>초등학교 3학년</span>
+          </div>
+          <div class="field">
+            <input type="text" class="info-input input-sm" placeholder=" " />
+            <span>반</span>
+          </div>
+          <div class="field">
+            <input type="text" class="info-input input-sm" placeholder=" " />
+            <span>번</span>
+          </div>
+          <div class="field">
+            <span>이름:</span>
+            <input type="text" class="info-input input-name" placeholder=" " />
+          </div>
+          <div class="confirm-stamp-box">
+            확인
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 친절한 학습 안내문 -->
+    <div class="instruction-guide-box">
+      <div class="guide-text">
+        📌 <strong>[학습 방법]</strong> 첫 번째 그림(🚩)과 마지막 그림(🏁)은 정해져 있어요.
+        가운데 들어갈 알맞은 순서의 카드를 찾아 <strong>빈칸에 번호(①, ②...)를 쓰거나</strong>,
+        아래 카드를 <strong>가위로 오려서 풀로 붙여보세요!</strong>
+      </div>
+    </div>
+
+    <!-- 동적 문제 카드 렌더링 컨테이너 -->
+    <div id="problemsList"></div>
+  </main>
+
+  <!-- ==========================================
+       맞춤형 학습지 생성 모달
+       ========================================== -->
+  <div class="modal-overlay" id="customModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🎲 맞춤형 새 학습지 만들기</h3>
+        <button class="btn-close-modal" onclick="closeCustomGenerator()">&times;</button>
+      </div>
+
+      <div class="modal-form-group">
+        <label>한 차시 문제 개수 설정:</label>
+        <div class="btn-group-toggle">
+          <label class="btn-toggle-option" style="display:flex; align-items:center; gap:6px;">
+            <input type="radio" name="problemCount" value="3"> 3문제 (집중형)
+          </label>
+          <label class="btn-toggle-option active" style="display:flex; align-items:center; gap:6px;">
+            <input type="radio" name="problemCount" value="4" checked> 4문제 (표준형)
+          </label>
+          <label class="btn-toggle-option" style="display:flex; align-items:center; gap:6px;">
+            <input type="radio" name="problemCount" value="5"> 5문제 (종합형)
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-form-group">
+        <p style="font-size: 13.5px; color: #495057; line-height: 1.6; background:#f8f9fa; padding:12px; border-radius:8px;">
+          💡 과학, 보건/안전, 실과/만들기 등 초3 교육과정의 다양한 주제 풀에서
+          <strong>최소 2단계부터 최대 5단계 순서 맞추기 문제</strong>가 골고루 무작위로 추출되어
+          새로운 학습지로 즉시 구성됩니다.
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <button class="btn btn-secondary" onclick="closeCustomGenerator()">취소</button>
+        <button class="btn btn-primary" onclick="generateCustomWorksheet()">✨ 학습지 생성하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 스크립트 로드 -->
+  <script src="data.js"></script>
+  <script src="illustrations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
